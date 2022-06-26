@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+embeddings/vkyc/ebd_vkyc_v9_hm2
+embeddings/vkyc/ebd_vykc_v14_ec2
+embeddings/timit/ebd
