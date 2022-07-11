@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from FRR.calc_frr_v4 import calcFRRs
+from FRR.calc_frr_v5 import calcFRRs
 from FAR.calc_far_v6 import calcFARs
 from data_io import ReadList, getEmbeddingsData
 from ENUM.path_enum import PATH_ENUM

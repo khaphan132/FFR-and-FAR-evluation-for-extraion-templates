@@ -26,5 +26,10 @@ def getEmbeddingsData(data_list: array, label_dict: dict, embedding_path: str):
     for item in data_list:
         if not label_dict[item] in embeddings_data.keys():
             embeddings_data[label_dict[item]] = []
-        embeddings_data[label_dict[item]].append(ReadList(embedding_path + "/" + item.replace("wav", "txt"), True))
+        try:
+            ebd = ReadList(embedding_path + "/" + item.replace("wav", "txt"), True)
+            embeddings_data[label_dict[item]].append(ebd)
+        except:
+            print("can not open file: ", item)
+        
     return embeddings_data

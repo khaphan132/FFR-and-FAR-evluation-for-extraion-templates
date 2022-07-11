@@ -13,6 +13,7 @@ class PATH_ENUM(Enum):
     VKYC_LIST_ALL = 'embeddings/vkyc/vkyc_v2_list/vkyc_all.scp'
     VKYC_LIST_TRAIN = 'embeddings/vkyc/vkyc_v2_list/vkyc_train.scp'
     VKYC_LIST_TEST = 'embeddings/vkyc/vkyc_v2_list/vkyc_test.scp'
+    VKYC_LIST_EVAL = 'embeddings/vkyc/vkyc_v2_list/vkyc_eval.scp'
     VKYC_CLASS_DICT_FILE = 'embeddings/vkyc/vkyc_v2_list/vkyc_labels.npy'
     VKYC_EMBEDING_V14 = 'embeddings/vkyc/ebd/vkyc-v14'
     VKYC_EMBEDING_V30 = 'embeddings/vkyc/ebd/vkyc-v30'

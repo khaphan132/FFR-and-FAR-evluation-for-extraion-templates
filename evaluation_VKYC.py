@@ -1,7 +1,7 @@
 import os
 import numpy as np
-from FRR.calc_frr_v4 import calcFRRs
-from FAR.calc_far_v5 import calcFARs
+from FRR.calc_frr_v5 import calcFRRs
+from FAR.calc_far_v6 import calcFARs
 from data_io import ReadList, getEmbeddingsData
 from ENUM.path_enum import PATH_ENUM
 from utils import calc_average_of_arrays, get_key_len_and_error_capacity_by_size, saveChart2Line, split_enroll_and_test_embeddings
@@ -21,7 +21,7 @@ from utils import calc_average_of_arrays, get_key_len_and_error_capacity_by_size
 lab_dict = np.load(PATH_ENUM.VKYC_CLASS_DICT_FILE.value, allow_pickle=True).item()
 
 """  test list """
-wav_lst_te = ReadList(PATH_ENUM.VKYC_LIST_TEST.value)
+wav_lst_te = ReadList(PATH_ENUM.VKYC_LIST_EVAL.value)
 snt_te = len(wav_lst_te)
 
 """  embedding set that perform evaluating """
@@ -52,7 +52,7 @@ eer_min_index = np.argmin(EER)
 print(eer_min, eer_min_index, vkey_len_arr[eer_min_index], verr_capacity_arr[eer_min_index])
 
 """  save result """
-output_folder = "output/output_" + path_ebd.split("/")[-1] + "_" + str(key_len) + "/"
+output_folder = "output_VKYC/output_" + path_ebd.split("/")[-1] + "_" + str(key_len) + "/"
 print("output folder: " + output_folder)
 try:
     os.stat(output_folder)
