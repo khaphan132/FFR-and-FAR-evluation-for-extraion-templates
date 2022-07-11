@@ -1,12 +1,12 @@
 import random
 import numpy as np
 import matplotlib.pyplot as plt
-from error_toleration_enum import ERROR_TOLERATION_ENUM
+from ENUM.error_toleration_enum import ERROR_TOLERATION_ENUM
 
 
 def split_1_array_to_2_array(arr: np.array, index_split: np.number, isShuffle: bool = False):
-    if (index_split > len(arr)):
-        return (arr, [])
+    if (index_split >= len(arr)):
+        return ([], arr)
     if (isShuffle):
         random.shuffle(arr)
     split_arrs = np.split(arr, [index_split])
@@ -45,6 +45,17 @@ def get_key_len_and_error_capacity_by_size(size: np.number):
     if size == 1023:
         return ERROR_TOLERATION_ENUM.KEY_LEN_1023.value, ERROR_TOLERATION_ENUM.ERROR_CAPACITY_1023.value
 
+def split_enroll_and_test_embeddings(embeddings: object, number_of_enroll_embeddings_per_user: int):
+    enroll_ebds, test_ebds = {}, {}
+    for user in embeddings.keys():
+        enrolled_vectors, test_vectors = split_1_array_to_2_array(
+                                        embeddings[user], 
+                                        number_of_enroll_embeddings_per_user, 
+                                        True)
+        if (len(enrolled_vectors) != 0):
+            enroll_ebds[user] = get_binary_vector_of_real_vectors(enrolled_vectors)
+        test_ebds[user] = np.sign(test_vectors)
+    return (enroll_ebds, test_ebds)
 
 def saveChart2Line(
     line1: np.array,

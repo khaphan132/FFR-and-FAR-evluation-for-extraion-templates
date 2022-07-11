@@ -1,7 +1,7 @@
 import array
 import numpy as np
 
-from path_enum import PATH_ENUM
+from ENUM.path_enum import PATH_ENUM
 
 
 def ReadList(list_file_path: str, isNumberArray: bool = False):
