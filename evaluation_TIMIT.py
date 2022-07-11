@@ -18,29 +18,24 @@ from utils import get_key_len_and_error_capacity_by_size, saveChart2Line
 """
 
 """  Loading label dictionary """
-# lab_dict = np.load(PATH_ENUM.TIMIT_CLASS_DICT_FILE.value, allow_pickle=True).item()
-lab_dict = np.load(PATH_ENUM.VKYC_CLASS_DICT_FILE.value, allow_pickle=True).item()
+lab_dict = np.load(PATH_ENUM.TIMIT_CLASS_DICT_FILE.value, allow_pickle=True).item()
 
 """  test list """
-# wav_lst_te = ReadList(PATH_ENUM.TIMIT_LIST_TEST.value)
-wav_lst_te = ReadList(PATH_ENUM.VKYC_LIST_TEST.value)
+wav_lst_te = ReadList(PATH_ENUM.TIMIT_LIST_TEST.value)
 snt_te = len(wav_lst_te)
 
 """  embedding set that perform evaluating """
-# path_ebd = PATH_ENUM.VKYC_EMBEDING_V9_HM2.value
-path_ebd = PATH_ENUM.VKYC_EMBEDING_V14_EC2.value
-# path_ebd = PATH_ENUM.TIMIT_EMBEDING_NOTRAIN_V41_HM2.value
-
+path_ebd = PATH_ENUM.TIMIT_EMBEDING_NOTRAIN_V41_HM2.value
 embeddings = {}
 embeddings = getEmbeddingsData(wav_lst_te, lab_dict, path_ebd)
 
 
 """  get vkey_len_arr, verr_capacity_arr """
-key_size = 1023
-vkey_len_arr, verr_capacity_arr = get_key_len_and_error_capacity_by_size(key_size)  # codeword key_size bits
+key_len = 1023
+vkey_len_arr, verr_capacity_arr = get_key_len_and_error_capacity_by_size(key_len)  # codeword key_size bits
 
 print("--- test case ---")
-print("key_len: ", key_size)
+print("key_len: ", key_len)
 print("embedding set: " + path_ebd.split("/")[-1])
 
 
@@ -50,7 +45,7 @@ FAR = calcFARs(embeddings, vkey_len_arr, verr_capacity_arr)
 
 
 """  save result """
-output_folder = "output/output_" + path_ebd.split("/")[-1] + "_" + str(key_size) + "/"
+output_folder = "output/output_" + path_ebd.split("/")[-1] + "_" + str(key_len) + "/"
 print("output folder: " + output_folder)
 try:
     os.stat(output_folder)
@@ -66,7 +61,7 @@ saveChart2Line(
     "FAR",
     "key size",
     "error rate (%)",
-    path_ebd.split("/")[-1] + " - " + str(key_size) + "-bit codewords - FAR & FRR",
+    path_ebd.split("/")[-1] + " - " + str(key_len) + "-bit codewords - FAR & FRR",
     output_folder + "frr-far.png",
 )
 
