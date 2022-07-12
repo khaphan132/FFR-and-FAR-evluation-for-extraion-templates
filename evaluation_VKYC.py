@@ -25,7 +25,7 @@ wav_lst_te = ReadList(PATH_ENUM.VKYC_LIST_EVAL.value)
 snt_te = len(wav_lst_te)
 
 """  embedding set that perform evaluating """
-path_ebd = PATH_ENUM.VKYC_EMBEDING_V14.value
+path_ebd = PATH_ENUM.VKYC_EMBEDING_V30.value
 embeddings = {}
 embeddings = getEmbeddingsData(wav_lst_te, lab_dict, path_ebd)
 
@@ -34,7 +34,7 @@ number_of_enroll_embeddings_per_user = 5
 enroll_ebds, test_ebds = split_enroll_and_test_embeddings(embeddings, number_of_enroll_embeddings_per_user)
 
 """  get vkey_len_arr, verr_capacity_arr """
-key_len = 1023
+key_len = 255
 vkey_len_arr, verr_capacity_arr = get_key_len_and_error_capacity_by_size(key_len)  # codeword key_size bits
 
 print("--- test case ---")

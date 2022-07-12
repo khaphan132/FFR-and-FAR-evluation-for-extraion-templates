@@ -135,5 +135,6 @@ embeddings/.DS_Store
 embeddings/timit/.DS_Store
 embeddings/vkyc/.DS_Store
 output/.DS_Store
-output_TIMIT/
-output_VKYC/
+
+*/.DS_Store
+.DS_Store
