@@ -18,3 +18,6 @@ class PATH_ENUM(Enum):
     VKYC_EMBEDING_V14 = 'embeddings/vkyc/ebd/vkyc-v14'
     VKYC_EMBEDING_V30 = 'embeddings/vkyc/ebd/vkyc-v30'
     VKYC_EMBEDING_V33 = 'embeddings/vkyc/ebd/vkyc-v33'
+
+def get_TIMIT_path_ebds():
+    return [PATH_ENUM.TIMIT_EMBEDING_V41.value, PATH_ENUM.TIMIT_EMBEDING_V46.value, PATH_ENUM.TIMIT_EMBEDING_V48.value]
