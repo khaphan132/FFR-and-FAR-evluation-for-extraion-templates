@@ -21,3 +21,6 @@ class PATH_ENUM(Enum):
 
 def get_TIMIT_path_ebds():
     return [PATH_ENUM.TIMIT_EMBEDING_V41.value, PATH_ENUM.TIMIT_EMBEDING_V46.value, PATH_ENUM.TIMIT_EMBEDING_V48.value]
+
+def get_VKYC_path_ebds():
+    return [PATH_ENUM.VKYC_EMBEDING_V14.value, PATH_ENUM.VKYC_EMBEDING_V30.value, PATH_ENUM.VKYC_EMBEDING_V33.value]

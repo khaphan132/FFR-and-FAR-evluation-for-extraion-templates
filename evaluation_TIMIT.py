@@ -13,10 +13,8 @@ from utils import (
 
 # load embeddings from test folders
 # store it as following dictionary
-"""  Loading label dictionary """
-
-
 def prepare_list_wav():
+    """  Loading label dictionary """
     lab_dict = np.load(PATH_ENUM.TIMIT_CLASS_DICT_FILE.value, allow_pickle=True).item()
 
     """  test list """
