@@ -1,5 +1,6 @@
 import os
 import numpy as np
+from ENUM.constraint_mappings import get_constraint_string
 from ENUM.error_toleration_enum import ERROR_TOLERATION_ENUM
 from FRR.calc_frr_threshold_v1 import calcFRRs
 from FAR.calc_far_threshold_v1 import calcFARs
@@ -73,8 +74,8 @@ def execute_evaluate(lab_dict, wav_lst_te, path_ebd):
         "FAR",
         "threshold",
         "error rate (%)",
-        path_ebd.split("/")[-1] + " - " + "threshold - FAR & FRR",
-        output_folder + "frr-far.png",
+        "FAR & FRR with VKYC - " + get_constraint_string(path_ebd.split("/")[-1]),
+        output_folder + "FRR_and_FAR_with_VKYC_" + get_constraint_string(path_ebd.split("/")[-1]).replace(" ", "_") + ".png",
     )
 
     print("\n\n===================== done ===========================\n\n")

@@ -90,5 +90,6 @@ def saveChart2Line(
 
     # function to show the plot
     # plt.show()
-
-    plt.savefig(path_export_graph)
+    # w = 640
+    # h = 480
+    plt.savefig(path_export_graph, dpi=1000)
