@@ -43,11 +43,12 @@ def execute_evaluate(lab_dict, wav_lst_te, path_ebd):
     FRRs = calcFRRs(enroll_ebds, test_ebds, threshold_arr)
     FARs = calcFARs(test_ebds, threshold_arr)
 
-    EERs = calc_average_of_arrays([FRRs, FARs])
+    # EERs = calc_average_of_arrays([FRRs, FARs]) 
+    EERs = np.abs(np.subtract(FRRs, FARs))
     eer_min = np.min(EERs)
     eer_min_index = np.argmin(EERs)
     print(
-        "FAR, FRR, EER and threshold: ", eer_min, FRRs[eer_min_index], FARs[eer_min_index], threshold_arr[eer_min_index]
+        "FAR, FRR, EER_index and threshold: ", FRRs[eer_min_index], FARs[eer_min_index], eer_min_index, threshold_arr[eer_min_index]
     )
 
     """  save result """
@@ -61,7 +62,7 @@ def execute_evaluate(lab_dict, wav_lst_te, path_ebd):
     write_report_threshold(
         FRRs[eer_min_index], 
         FARs[eer_min_index], 
-        EERs[eer_min_index], 
+        np.mean([FRRs[eer_min_index], FARs[eer_min_index]]),
         threshold_arr[eer_min_index], 
         output_folder
     )
@@ -72,7 +73,7 @@ def execute_evaluate(lab_dict, wav_lst_te, path_ebd):
         "FRR",
         [threshold_arr, FARs],
         "FAR",
-        "threshold",
+        "Hamming distance threshold",
         "error rate (%)",
         "FAR & FRR with VKYC - " + get_constraint_string(path_ebd.split("/")[-1]),
         output_folder + "FRR_and_FAR_with_VKYC_" + get_constraint_string(path_ebd.split("/")[-1]).replace(" ", "_") + ".png",

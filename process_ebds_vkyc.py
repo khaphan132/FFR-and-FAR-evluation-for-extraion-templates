@@ -7,7 +7,7 @@ from data_io import ReadList
 lab_dict = np.load(PATH_ENUM.VKYC_CLASS_DICT_FILE.value, allow_pickle=True).item()
 
 """  train list """
-wav_lst_train = ReadList(PATH_ENUM.VKYC_LIST_TEST.value)
+wav_lst_train = ReadList(PATH_ENUM.VKYC_LIST_TRAIN.value)
 snt_train = len(wav_lst_train)
 
 """  test list """
