@@ -2,8 +2,8 @@ import os
 import numpy as np
 from ENUM.constraint_mappings import get_constraint_string
 from ENUM.error_toleration_enum import ERROR_TOLERATION_ENUM
-from FRR.calc_frr_threshold_v1 import calcFRRs
-from FAR.calc_far_threshold_v1 import calcFARs
+from FRR.calc_frr_threshold import calcFRRs
+from FAR.calc_far_threshold import calcFARs
 from data_io import ReadList, getEmbeddingsData, write_report_threshold
 from ENUM.path_enum import PATH_ENUM, get_VKYC_path_ebds
 from utils import (
