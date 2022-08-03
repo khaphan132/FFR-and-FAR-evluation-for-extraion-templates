@@ -2,6 +2,7 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 from ENUM.error_toleration_enum import ERROR_TOLERATION_ENUM
+import seaborn as sns
 
 def split_1_array_to_2_array(arr: np.array, index_split: np.number, isShuffle: bool = True):
     if (index_split >= len(arr)):
@@ -93,3 +94,36 @@ def saveChart2Line(
     # w = 640
     # h = 480
     plt.savefig(path_export_graph, dpi=1000)
+    
+def visualize_distribution(intra, inter, label: str, path_export_graph: str, bin_range: float, bin_width: float, xmax: float, ymax: float):
+    plt.clf()
+    FONT_SIZE = 80
+    plt.rcParams["figure.figsize"] = [70, 35]
+    plt.rcParams["figure.autolayout"] = True
+    plt.rc('font', size=FONT_SIZE)          # controls default text sizes
+    plt.rc('axes', titlesize=FONT_SIZE+10)     # fontsize of the axes title
+    plt.rc('axes', labelsize=FONT_SIZE+10)    # fontsize of the x and y labels
+    plt.rc('xtick', labelsize=FONT_SIZE)    # fontsize of the tick labels
+    plt.rc('ytick', labelsize=FONT_SIZE)    # fontsize of the tick labels
+    plt.rc('legend', fontsize=FONT_SIZE)    # legend fontsize
+    plt.rc('figure', titlesize=FONT_SIZE+10)
+    
+    fig, ax = plt.subplots()
+
+    sns.set(style="darkgrid")
+    sns.set(font_scale=8)
+    sns.histplot(intra, binrange=(0, bin_range), binwidth=bin_width, ax=ax, kde=False, stat='probability',
+                 label='intra', color='blue')
+    sns.histplot(inter, binrange=(0, bin_range), binwidth=bin_width, ax=ax, kde=False, stat='probability',
+                 label='inter', color='orange')
+
+    plt.legend()
+    plt.xlabel(label)
+    plt.grid(True, linewidth=5)
+    
+    ax.set_xlim([0, xmax])
+    ax.set_ylim([0, ymax])
+    ax.tick_params(axis='both', which='major', pad=35)
+
+    plt.savefig(path_export_graph)
+
