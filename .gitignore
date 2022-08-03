@@ -130,6 +130,7 @@ dmypy.json
 
 embeddings/vkyc/ebd
 embeddings/timit/ebd
+embeddings/timit/ebd_open
 embeddings/_original_ebds
 embeddings/.DS_Store
 embeddings/timit/.DS_Store

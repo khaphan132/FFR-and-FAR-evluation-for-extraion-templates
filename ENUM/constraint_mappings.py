@@ -3,8 +3,11 @@ from sympy import get_contraction_structure
 
 timit_constraint_mappings = {
     "timit-v41": "Square constraint",
+    "timit-v41-open": "Square constraint",
     "timit-v46": "Triplet constraint",
+    "timit-v46-open": "Triplet constraint",
     "timit-v48": "Modulus constraint",    
+    "timit-v48-open": "Modulus constraint",    
 }
 
 vkyc_constraint_mappings = {

@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from ENUM.error_toleration_enum import ERROR_TOLERATION_ENUM
 
-def split_1_array_to_2_array(arr: np.array, index_split: np.number, isShuffle: bool = False):
+def split_1_array_to_2_array(arr: np.array, index_split: np.number, isShuffle: bool = True):
     if (index_split >= len(arr)):
         return ([], arr)
     if (isShuffle):
@@ -50,7 +50,7 @@ def split_enroll_and_test_embeddings(embeddings: object, number_of_enroll_embedd
         enrolled_vectors, test_vectors = split_1_array_to_2_array(
                                         embeddings[user], 
                                         number_of_enroll_embeddings_per_user, 
-                                        False)
+                                        True)
         if (len(enrolled_vectors) != 0):
             enroll_ebds[user] = get_binary_vector_of_real_vectors(enrolled_vectors)
         test_ebds[user] = np.sign(test_vectors)
